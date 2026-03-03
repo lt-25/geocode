@@ -18,7 +18,7 @@ return [
     |--------------------------------------------------------------------------
     */
   'maps_co' => [
-    'api_url' => env('GEOCODE_MAPS_CO_URL', 'https://geocode.maps.co'),
+    'api_url' => env('GEOCODE_MAPS_CO_URL', 'https://api.locationiq.com/v1/autocomplete'),
     'api_key' => env('GEOCODE_MAPS_CO_KEY', null),
     'timeout' => env('GEOCODE_TIMEOUT', 15),
   ],

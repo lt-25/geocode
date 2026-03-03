@@ -18,7 +18,7 @@ class MapsCoGeocoder implements GeocoderContract
 
   public function __construct()
   {
-    $this->apiUrl = 'https://geocode.maps.co';
+    $this->apiUrl = 'https://api.locationiq.com/v1/autocomplete';
     $this->apiKey = null;
     $this->timeout = 15;
     $this->cacheEnabled = false;
@@ -58,14 +58,14 @@ class MapsCoGeocoder implements GeocoderContract
         'q' => $query,
         'limit' => $limit,
         'format' => 'json',
-        'accept-language' => 'en'
+        'dedupe' => 1
       ];
 
       if ($this->apiKey) {
-        $queryParams['api_key'] = $this->apiKey;
+        $queryParams['key'] = $this->apiKey;
       }
 
-      $response = Http::timeout($this->timeout)->get("{$this->apiUrl}/search", $queryParams);
+      $response = Http::timeout($this->timeout)->get("{$this->apiUrl}/", $queryParams);
 
       if ($response->successful()) {
         $results = $this->formatSearchResults($response->json());
@@ -298,17 +298,13 @@ class MapsCoGeocoder implements GeocoderContract
       $address = $location['address'] ?? [];
 
       $results[] = [
-        'name' => $location['name'] ?? null,
-        'address' => $address,
-        'city' => $address['city'] ?? $address['town'] ?? null,
+        'id' => $address['name'] . '_' . $address['state'] . '_' . $address['country'] . '_' . $location['lat'] . '_' . $location['lon'] ?? null,
+        'text' =>  $address['name'] . ', ' . $address['state'] . ', ' . $address['country'] ?? null,
+        'city' => $address['name'] ?? null,
         'state' => $address['state'] ?? null,
         'country' => $address['country'] ?? null,
-        'postcode' => $address['postcode'] ?? null,
         'latitude' => (float) ($location['lat'] ?? null),
         'longitude' => (float) ($location['lon'] ?? null),
-        'type' => $location['type'] ?? null,
-        'display_name' => $location['display_name'] ?? null,
-        'importance' => $location['importance'] ?? null,
       ];
     }
 

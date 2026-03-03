@@ -1,6 +1,6 @@
 # Geocode
 
-A powerful and elegant Laravel package for geocoding and reverse geocoding using the maps.co API.
+A powerful and elegant Laravel package for geocoding and reverse geocoding using the location iq API.
 
 ## Features
 
