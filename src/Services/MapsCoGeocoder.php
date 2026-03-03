@@ -57,7 +57,8 @@ class MapsCoGeocoder implements GeocoderContract
       $queryParams = [
         'q' => $query,
         'limit' => $limit,
-        'format' => 'json'
+        'format' => 'json',
+        'accept-language' => 'en'
       ];
 
       if ($this->apiKey) {
