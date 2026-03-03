@@ -67,7 +67,8 @@ class MapsCoGeocoder implements GeocoderContract
 
 
       $response = Http::timeout($this->timeout)->get("{$this->apiUrl}", $queryParams);
-
+      $this->log("Location Iq API Request: {$this->apiUrl} with params " . json_encode($queryParams));
+      $this->log("Location Iq API Response: Status {$response->status()} - " . $response->body());
       if ($response->successful()) {
         $results = $this->formatSearchResults($response->json());
 

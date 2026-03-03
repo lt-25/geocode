@@ -10,7 +10,7 @@ return [
     |
     */
 
-  'provider' => env('GEOCODE_PROVIDER', 'maps-co'),
+  'provider' => env('GEOCODE_PROVIDER', 'location-iq'),
 
   /*
     |--------------------------------------------------------------------------
