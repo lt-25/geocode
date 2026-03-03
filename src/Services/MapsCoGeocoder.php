@@ -54,15 +54,15 @@ class MapsCoGeocoder implements GeocoderContract
 
       $limit = $options['limit'] ?? 50;
 
-      if ($this->apiKey) {
-        $queryParams['key'] = $this->apiKey;
-      }
-
       $queryParams = [
         'q' => $query,
         'limit' => $limit,
         'dedupe' => 1
       ];
+
+      if ($this->apiKey) {
+        $queryParams['key'] = $this->apiKey;
+      }
 
 
 
