@@ -54,16 +54,17 @@ class MapsCoGeocoder implements GeocoderContract
 
       $limit = $options['limit'] ?? 50;
 
-      $queryParams = [
-        'q' => $query,
-        'limit' => $limit,
-        'format' => 'json',
-        'dedupe' => 1
-      ];
-
       if ($this->apiKey) {
         $queryParams['key'] = $this->apiKey;
       }
+
+      $queryParams = [
+        'q' => $query,
+        'limit' => $limit,
+        'dedupe' => 1
+      ];
+
+
 
       $response = Http::timeout($this->timeout)->get("{$this->apiUrl}", $queryParams);
 
