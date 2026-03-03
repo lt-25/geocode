@@ -1,0 +1,13 @@
+/vendor/
+/build/
+.DS_Store
+.env
+.env.local
+.env.*.local
+*.log
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+composer.lock

@@ -1,0 +1,42 @@
+{
+  "name": "lt-25/geocode",
+  "description": "A powerful Laravel package for geocoding and reverse geocoding using maps.co API",
+  "keywords": ["laravel", "geocoding", "maps", "location", "coordinates"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Lalit Tiwari",
+      "email": "affhomesforum@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4|^8.0|^8.1|^8.2|^8.3",
+    "illuminate/support": "^7.0|^8.0|^9.0|^10.0|^11.0",
+    "illuminate/http": "^7.0|^8.0|^9.0|^10.0|^11.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0|^10.0",
+    "laravel/pint": "^1.0",
+    "phpstan/phpstan": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Lalit\\Geocode\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Lalit\\Geocode\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Lalit\\Geocode\\Providers\\GeocodeServiceProvider"
+      ],
+      "aliases": {
+        "Geocode": "Lalit\\Geocode\\Facades\\Geocode"
+      }
+    }
+  }
+}
