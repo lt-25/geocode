@@ -65,7 +65,7 @@ class MapsCoGeocoder implements GeocoderContract
         $queryParams['key'] = $this->apiKey;
       }
 
-      $response = Http::timeout($this->timeout)->get("{$this->apiUrl}/", $queryParams);
+      $response = Http::timeout($this->timeout)->get("{$this->apiUrl}", $queryParams);
 
       if ($response->successful()) {
         $results = $this->formatSearchResults($response->json());
